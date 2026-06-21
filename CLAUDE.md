@@ -21,12 +21,14 @@ the skill (`/plugin marketplace add earelin/claude`, then `/plugin install <name
   - `skills/<skill-name>/SKILL.md` — model-invoked skills. Other component types are
     auto-discovered from conventional plugin-root locations if added: `commands/*.md`,
     `agents/*.md`, `hooks/hooks.json`, `.mcp.json`.
-- `skills/<skill-name>/SKILL.md` — **top-level, un-packaged skills** (the `github-*`
-  family). These are not part of any registered plugin and are not in `marketplace.json`;
-  they are standalone skill definitions.
 
-Current plugins: `specs` (specs-review), `architecture` (architecture-review),
-`backend` (backend-review). Each currently ships a single review skill.
+The `github-*` skills are packaged in the `github` plugin (`plugins/github/skills/`). There
+are no longer any top-level, un-packaged skills.
+
+Current plugins: `github` (the `github-*` family of PR/issue skills), `specs` (specs-review),
+`architecture` (architecture-review), `backend` (backend-review). The `specs`, `architecture`,
+and `backend` manifests declare `"dependencies": ["github"]`, so installing any of them also
+installs `github`.
 
 ## Conventions
 
@@ -38,7 +40,7 @@ Current plugins: `specs` (specs-review), `architecture` (architecture-review),
   through the ones relevant" to the subject, followed by `## Review criteria` grouped into
   `###` themed subsections of checklist questions. Match this style when adding or editing
   review skills (`specs-review`, `architecture-review`, `backend-review`).
-- **GitHub skills** (`skills/github-*`) wrap `gh` CLI workflows. They share precondition
+- **GitHub skills** (`plugins/github/skills/github-*`) wrap `gh` CLI workflows. They share precondition
   patterns: confirm wording before anything outward-facing (PRs, issues, comments), never
   open a PR from the default branch, and accept a PR/issue number, URL, or nothing
   (defaulting to the current branch).
@@ -51,9 +53,11 @@ Current plugins: `specs` (specs-review), `architecture` (architecture-review),
 2. Add components at the plugin root (e.g. `skills/<name>/SKILL.md`).
 3. Register it in `marketplace.json`'s `plugins` array with `name`, `source` (folder name),
    `description`, `version`, and `license`.
+4. To make a plugin depend on another, add a `"dependencies": ["<plugin>"]` array to its
+   `plugin.json` (bare names resolve against this marketplace). Bump the dependent's
+   `version` in both `plugin.json` and its `marketplace.json` entry.
 
-## Known drift
+## Source of truth
 
-`README.md` still describes a `hello-world` sample plugin that no longer exists; the actual
-plugins are `specs`, `architecture`, and `backend`. Prefer `marketplace.json` as the source
-of truth and update the README when touching it.
+Prefer `marketplace.json` as the source of truth for the installable plugin set, and keep
+`README.md` in sync when touching it.

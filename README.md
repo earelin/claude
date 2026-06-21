@@ -13,9 +13,13 @@ plugins you can add to Claude Code and install from.
 
 | Plugin | Description |
 | ------ | ----------- |
+| [`github`](plugins/github) | Skills for creating and reading GitHub pull requests and issues with the `gh` CLI. |
 | [`specs`](plugins/specs) | A `specs-review` skill that reviews specification quality. |
 | [`architecture`](plugins/architecture) | An `architecture-review` skill that reviews architecture and design quality. |
 | [`backend`](plugins/backend) | A `backend-review` skill and a `pr-review` agent for reviewing backend pull requests. |
+
+The `specs`, `architecture`, and `backend` plugins depend on `github`, so installing any of
+them also installs `github`.
 
 Install a plugin with:
 
@@ -31,11 +35,11 @@ Then run `/reload-plugins` (or restart Claude Code) to activate it.
 .
 ├── .claude-plugin/
 │   └── marketplace.json      # the marketplace catalog
-├── plugins/                  # one directory per installable plugin
-│   ├── specs/
-│   ├── architecture/
-│   └── backend/
-└── skills/                   # standalone, un-packaged skills (e.g. github-*)
+└── plugins/                  # one directory per installable plugin
+    ├── github/
+    ├── specs/
+    ├── architecture/
+    └── backend/
 ```
 
 ## Adding a new plugin

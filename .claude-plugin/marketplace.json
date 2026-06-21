@@ -6,29 +6,33 @@
     "email": "xavier.carriba@gmail.com"
   },
   "description": "Custom Claude Code plugins by earelin",
-  "metadata": {
-    "pluginRoot": "./plugins"
-  },
   "plugins": [
     {
-      "name": "specs",
-      "source": "./specs",
-      "description": "Specifications review plugin: a specs-review skill that reviews specification quality",
+      "name": "github",
+      "source": "./plugins/github",
+      "description": "GitHub plugin: skills for creating and reading pull requests and issues with the gh CLI",
       "version": "0.1.0",
+      "license": "GPL-3.0"
+    },
+    {
+      "name": "specs",
+      "source": "./plugins/specs",
+      "description": "Specifications review plugin: a specs-review skill that reviews specification quality",
+      "version": "0.1.1",
       "license": "GPL-3.0"
     },
     {
       "name": "architecture",
-      "source": "./architecture",
+      "source": "./plugins/architecture",
       "description": "Architecture review plugin: an architecture-review skill that reviews architecture and design quality",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "license": "GPL-3.0"
     },
     {
       "name": "backend",
-      "source": "./backend",
+      "source": "./plugins/backend",
       "description": "Backend plugin: a backend-review skill and a pr-review agent for reviewing backend pull requests",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "license": "GPL-3.0"
     }
   ]
