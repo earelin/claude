@@ -11,9 +11,16 @@
   },
   "plugins": [
     {
-      "name": "hello-world",
-      "source": "./hello-world",
-      "description": "Sample plugin: a /greet command and a changelog skill",
+      "name": "specs",
+      "source": "./specs",
+      "description": "Specifications review plugin: a specs-review skill that reviews specification quality",
+      "version": "0.1.0",
+      "license": "GPL-3.0"
+    },
+    {
+      "name": "backend",
+      "source": "./backend",
+      "description": "Backend plugin: a pr-review-backend skill for reviewing backend pull requests",
       "version": "0.1.0",
       "license": "GPL-3.0"
     }

@@ -1,12 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "hello-world",
-  "description": "Sample plugin demonstrating a command and a skill",
+  "name": "backend",
+  "description": "Backend plugin for Claude",
   "version": "0.1.0",
   "author": {
     "name": "earelin",
     "email": "xavier.carriba@gmail.com"
   },
   "license": "GPL-3.0",
-  "keywords": ["sample", "template", "example"]
+  "keywords": ["backend", "api", "server"]
 }
