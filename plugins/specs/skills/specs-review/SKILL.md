@@ -13,16 +13,6 @@ question applies to every spec).
 
 ## Review criteria
 
-### Design & architecture
-
-- Does the overall design meet the requirements?
-- Is the design realistic and feasible in terms of the time needed to implement it (especially in the initial phases of development)?
-- Are interfaces well suited to deal with both internal and external interactions?
-- Are design principles agreed, shared, and cohesive?
-- Is the problem statement properly defined?
-- Is the design actually solving the issues within the problem statement?
-- Is the FURPS+ model (or similar) taken into account?
-
 ### Quality attributes (FURPS+)
 
 - Is usability (end-user perspective) considered?
@@ -43,19 +33,13 @@ question applies to every spec).
 - Is it verifiable?
 - Can requirements be traced back to their related functionalities?
 
-### Technology, process & MVP
+### Process & MVP
 
-- Are technologies, platforms, languages, libraries, and tools adequate?
 - Does the team have the expertise required to advance the project?
 - Are the processes in place complete and actually manageable?
 - Is the definition of done appropriate?
 - Is the minimum viable product (MVP) clearly defined?
 - Is the MVP properly defined (i.e., not only functionalities)?
-
-### Judgment & experience
-
-- Does the design show signs of serial hammering (repeatedly forcing the same familiar solution onto every problem)?
-- Have industry trends and previous experience been thoughtfully considered?
 
 ### Team & skills
 

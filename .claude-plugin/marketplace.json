@@ -18,6 +18,13 @@
       "license": "GPL-3.0"
     },
     {
+      "name": "architecture",
+      "source": "./architecture",
+      "description": "Architecture review plugin: an architecture-review skill that reviews architecture and design quality",
+      "version": "0.1.0",
+      "license": "GPL-3.0"
+    },
+    {
       "name": "backend",
       "source": "./backend",
       "description": "Backend plugin: a pr-review-backend skill for reviewing backend pull requests",
