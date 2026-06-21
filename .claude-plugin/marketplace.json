@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "earelin-plugins",
+  "owner": {
+    "name": "earelin",
+    "email": "xavier.carriba@gmail.com"
+  },
+  "description": "Custom Claude Code plugins by earelin",
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "hello-world",
+      "source": "./hello-world",
+      "description": "Sample plugin: a /greet command and a changelog skill",
+      "version": "0.1.0",
+      "license": "GPL-3.0"
+    }
+  ]
+}
