@@ -15,7 +15,7 @@ plugins you can add to Claude Code and install from.
 | ------ | ----------- |
 | [`specs`](plugins/specs) | A `specs-review` skill that reviews specification quality. |
 | [`architecture`](plugins/architecture) | An `architecture-review` skill that reviews architecture and design quality. |
-| [`backend`](plugins/backend) | A `backend-review` skill for reviewing backend pull requests. |
+| [`backend`](plugins/backend) | A `backend-review` skill and a `pr-review` agent for reviewing backend pull requests. |
 
 Install a plugin with:
 
