@@ -13,12 +13,14 @@ plugins you can add to Claude Code and install from.
 
 | Plugin | Description |
 | ------ | ----------- |
-| [`hello-world`](plugins/hello-world) | Sample plugin: a `/greet` command and a changelog skill. Use it as a template. |
+| [`specs`](plugins/specs) | A `specs-review` skill that reviews specification quality. |
+| [`architecture`](plugins/architecture) | An `architecture-review` skill that reviews architecture and design quality. |
+| [`backend`](plugins/backend) | A `backend-review` skill for reviewing backend pull requests. |
 
 Install a plugin with:
 
 ```
-/plugin install hello-world@earelin-plugins
+/plugin install specs@earelin-plugins
 ```
 
 Then run `/reload-plugins` (or restart Claude Code) to activate it.
@@ -29,15 +31,18 @@ Then run `/reload-plugins` (or restart Claude Code) to activate it.
 .
 ├── .claude-plugin/
 │   └── marketplace.json      # the marketplace catalog
-└── plugins/
-    └── hello-world/          # one directory per plugin
+├── plugins/                  # one directory per installable plugin
+│   ├── specs/
+│   ├── architecture/
+│   └── backend/
+└── skills/                   # standalone, un-packaged skills (e.g. github-*)
 ```
 
 ## Adding a new plugin
 
 1. Create a folder under `plugins/`, e.g. `plugins/my-plugin/`.
 2. Add a manifest at `plugins/my-plugin/.claude-plugin/plugin.json` (see
-   [`hello-world`](plugins/hello-world/.claude-plugin/plugin.json) for a template).
+   [`specs`](plugins/specs/.claude-plugin/plugin.json) for a template).
 3. Add components in the conventional, auto-discovered locations at the plugin root:
    - `commands/*.md` — slash commands (`/my-plugin:name`)
    - `skills/<name>/SKILL.md` — model-invoked skills (`my-plugin:name`)
@@ -56,7 +61,8 @@ Then run `/reload-plugins` (or restart Claude Code) to activate it.
      "name": "my-plugin",
      "source": "./my-plugin",
      "description": "What it does",
-     "version": "0.1.0"
+     "version": "0.1.0",
+     "license": "GPL-3.0"
    }
    ```
 
