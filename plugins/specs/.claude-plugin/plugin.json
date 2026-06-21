@@ -1,12 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "specs",
-  "description": "Specifications review plugin for Claude",
+  "description": "Specifications plugin for Claude",
   "version": "0.1.0",
   "author": {
     "name": "earelin",
     "email": "xavier.carriba@gmail.com"
   },
   "license": "GPL-3.0",
-  "keywords": ["specifications", "review", "design", "requirements"]
+  "keywords": ["specifications", "design", "requirements"]
 }

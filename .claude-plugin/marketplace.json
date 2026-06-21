@@ -27,7 +27,7 @@
     {
       "name": "backend",
       "source": "./backend",
-      "description": "Backend plugin: a pr-review-backend skill for reviewing backend pull requests",
+      "description": "Backend plugin: a backend-review skill for reviewing backend pull requests",
       "version": "0.1.0",
       "license": "GPL-3.0"
     }

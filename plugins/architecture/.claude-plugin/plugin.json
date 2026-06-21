@@ -1,12 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "architecture",
-  "description": "Architecture review plugin for Claude",
+  "description": "Architecture plugin for Claude",
   "version": "0.1.0",
   "author": {
     "name": "earelin",
     "email": "xavier.carriba@gmail.com"
   },
   "license": "GPL-3.0",
-  "keywords": ["architecture", "design", "review", "software-design"]
+  "keywords": ["architecture", "design", "software-design"]
 }

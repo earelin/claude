@@ -1,37 +1,32 @@
-# hello-world
+# backend
 
-A sample Claude Code plugin that demonstrates the two most common component types:
+A Claude Code plugin for reviewing backend pull requests and code changes.
 
-- **Command** — `/hello-world:greet [name]` greets someone (or the world).
-- **Skill** — `hello-world:changelog`, a model-invoked skill that summarizes recent
-  git commits into a changelog.
-
-Use this plugin as a template for building your own.
+- **Skill** — `backend:backend-review`, a model-invoked skill that analyzes a backend pull
+  request against a structured checklist (code structure, data structures, design smells,
+  software architecture, naming & formatting, comments, concurrency & performance, security,
+  testing, API & contracts, data & persistence, error handling, observability, dependencies,
+  and change scope) and reports actionable feedback.
 
 ## Install
 
 ```
 /plugin marketplace add earelin/claude
-/plugin install hello-world@earelin-plugins
+/plugin install backend@earelin-plugins
 ```
 
 ## Usage
 
-```
-/hello-world:greet Xavier
-```
-
-Ask Claude for "a changelog of recent commits" to trigger the `changelog` skill.
+Ask Claude to "review this pull request" or "review these changes" (paste or point to the
+diff) to trigger the `backend-review` skill.
 
 ## Structure
 
 ```
-hello-world/
+backend/
 ├── .claude-plugin/
 │   └── plugin.json          # plugin manifest
-├── commands/
-│   └── greet.md             # slash command
 └── skills/
-    └── changelog/
+    └── backend-review/
         └── SKILL.md         # model-invoked skill
 ```
