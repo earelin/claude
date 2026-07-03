@@ -8,6 +8,34 @@
   "description": "Custom Claude Code plugins by earelin",
   "plugins": [
     {
+      "name": "architecture",
+      "source": "./plugins/architecture",
+      "description": "Architecture plugin: an architecture-review skill plus create-adr and adr-review skills for authoring and reviewing Architecture Decision Records",
+      "version": "0.2.0",
+      "license": "GPL-3.0"
+    },
+    {
+      "name": "backend",
+      "source": "./plugins/backend",
+      "description": "Backend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring backend changes on the current branch or a pull request",
+      "version": "0.4.1",
+      "license": "GPL-3.0"
+    },
+    {
+      "name": "devops",
+      "source": "./plugins/devops",
+      "description": "DevOps plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring CI/CD pipeline and infrastructure-as-code changes on the current branch or a pull request",
+      "version": "0.1.1",
+      "license": "GPL-3.0"
+    },
+    {
+      "name": "frontend",
+      "source": "./plugins/frontend",
+      "description": "Frontend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring frontend changes on the current branch or a pull request",
+      "version": "0.1.1",
+      "license": "GPL-3.0"
+    },
+    {
       "name": "github",
       "source": "./plugins/github",
       "description": "GitHub plugin: skills for creating and reading pull requests and issues with the gh CLI",
@@ -19,34 +47,6 @@
       "source": "./plugins/specs",
       "description": "Specifications plugin: skills to author and review specs, features, and tasks in a traceable SPEC → feature → task flow",
       "version": "0.3.0",
-      "license": "GPL-3.0"
-    },
-    {
-      "name": "architecture",
-      "source": "./plugins/architecture",
-      "description": "Architecture review plugin: an architecture-review skill that reviews architecture and design quality",
-      "version": "0.1.2",
-      "license": "GPL-3.0"
-    },
-    {
-      "name": "backend",
-      "source": "./plugins/backend",
-      "description": "Backend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring backend changes on the current branch or a pull request",
-      "version": "0.4.1",
-      "license": "GPL-3.0"
-    },
-    {
-      "name": "frontend",
-      "source": "./plugins/frontend",
-      "description": "Frontend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring frontend changes on the current branch or a pull request",
-      "version": "0.1.1",
-      "license": "GPL-3.0"
-    },
-    {
-      "name": "devops",
-      "source": "./plugins/devops",
-      "description": "DevOps plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring CI/CD pipeline and infrastructure-as-code changes on the current branch or a pull request",
-      "version": "0.1.1",
       "license": "GPL-3.0"
     }
   ]

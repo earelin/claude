@@ -2,12 +2,12 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "architecture",
   "description": "Architecture plugin for Claude",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "dependencies": ["github"],
   "author": {
     "name": "earelin",
     "email": "xavier.carriba@gmail.com"
   },
   "license": "GPL-3.0",
-  "keywords": ["architecture", "design", "software-design"]
+  "keywords": ["architecture", "adr", "decision-records", "design", "software-design"]
 }
