@@ -17,8 +17,8 @@
     {
       "name": "backend",
       "source": "./plugins/backend",
-      "description": "Backend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring backend changes on the current branch or a pull request",
-      "version": "0.4.1",
+      "description": "Backend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring backend changes on the current branch or a pull request, plus a java-unit-test skill for writing Java unit tests",
+      "version": "0.5.0",
       "license": "GPL-3.0"
     },
     {

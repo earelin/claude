@@ -13,6 +13,9 @@ A Claude Code plugin for reviewing and refactoring backend changes on the curren
   behaviour-preserving passes. It keeps the public API, data contract, and query semantics
   identical, gates every pass on a known-green safety net, caps at five passes, and prints a
   summary in the terminal.
+- **Skill** — `java-unit-test`, guidance for writing JUnit unit tests for Java code: AssertJ
+  for assertions, Mockito for test doubles, snake_case test method names, and a preference for
+  stubs over mocks.
 
 ## Install
 
@@ -25,7 +28,8 @@ A Claude Code plugin for reviewing and refactoring backend changes on the curren
 
 Ask Claude to "review the backend changes on this branch" (or "review this backend pull
 request") to invoke the `code-reviewer` agent, or "refactor the backend code of this branch"
-to invoke the `refactoring` agent.
+to invoke the `refactoring` agent. Ask Claude to "write unit tests for this Java class" to
+invoke the `java-unit-test` skill.
 
 ## Structure
 
@@ -33,7 +37,10 @@ to invoke the `refactoring` agent.
 backend/
 ├── .claude-plugin/
 │   └── plugin.json          # plugin manifest
-└── agents/
-    ├── code-reviewer.md     # read-only backend reviewer
-    └── refactoring.md       # behaviour-preserving backend refactorer
+├── agents/
+│   ├── code-reviewer.md     # read-only backend reviewer
+│   └── refactoring.md       # behaviour-preserving backend refactorer
+└── skills/
+    └── java-unit-test/
+        └── SKILL.md         # writing Java unit tests (AssertJ + Mockito)
 ```
