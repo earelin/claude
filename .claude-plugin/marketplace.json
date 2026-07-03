@@ -41,6 +41,13 @@
       "description": "Frontend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring frontend pull requests",
       "version": "0.1.0",
       "license": "GPL-3.0"
+    },
+    {
+      "name": "devops",
+      "source": "./plugins/devops",
+      "description": "DevOps plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring CI/CD pipelines and infrastructure-as-code",
+      "version": "0.1.0",
+      "license": "GPL-3.0"
     }
   ]
 }

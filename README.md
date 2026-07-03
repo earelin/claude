@@ -18,8 +18,9 @@ plugins you can add to Claude Code and install from.
 | [`architecture`](plugins/architecture) | An `architecture-review` skill that reviews architecture and design quality. |
 | [`backend`](plugins/backend) | A `code-reviewer` agent and a `refactoring` agent for reviewing and refactoring backend pull requests. |
 | [`frontend`](plugins/frontend) | A `code-reviewer` agent and a `refactoring` agent for reviewing and refactoring frontend pull requests. |
+| [`devops`](plugins/devops) | A `code-reviewer` agent and a `refactoring` agent for reviewing and refactoring CI/CD pipelines and infrastructure-as-code. |
 
-The `specs`, `architecture`, `backend`, and `frontend` plugins depend on `github`, so
+The `specs`, `architecture`, `backend`, `frontend`, and `devops` plugins depend on `github`, so
 installing any of them also installs `github`.
 
 Install a plugin with:
@@ -41,7 +42,8 @@ Then run `/reload-plugins` (or restart Claude Code) to activate it.
     ├── specs/
     ├── architecture/
     ├── backend/
-    └── frontend/
+    ├── frontend/
+    └── devops/
 ```
 
 ## Adding a new plugin

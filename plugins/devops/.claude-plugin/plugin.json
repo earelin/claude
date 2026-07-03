@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "devops",
+  "description": "DevOps plugin for Claude",
+  "version": "0.1.0",
+  "dependencies": ["github"],
+  "author": {
+    "name": "earelin",
+    "email": "xavier.carriba@gmail.com"
+  },
+  "license": "GPL-3.0",
+  "keywords": ["devops", "pipelines", "infrastructure", "review"]
+}
