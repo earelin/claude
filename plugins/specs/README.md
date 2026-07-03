@@ -3,8 +3,11 @@
 A Claude Code plugin for reviewing software specifications.
 
 - **Skill** — `specs:specs-review`, a model-invoked skill that analyzes a specification
-  against a structured checklist (design, quality attributes, requirements quality,
-  technology and process, team and skills) and reports actionable feedback.
+  against a structured checklist (level of abstraction, requirements quality, testable
+  acceptance criteria, breadth & stability, traceability, and format/conventions) and reports
+  actionable feedback. It reviews specs for fitness within a traceable **SPEC → feature → task**
+  authoring flow (with governing ADRs) — checking a spec stays at the *what* level and pushes
+  design, sequencing, and decisions down to features, tasks, and ADRs.
 
 ## Install
 

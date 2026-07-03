@@ -17,8 +17,8 @@
     {
       "name": "specs",
       "source": "./plugins/specs",
-      "description": "Specifications review plugin: a specs-review skill that reviews specification quality",
-      "version": "0.1.2",
+      "description": "Specifications review plugin: a specs-review skill that reviews specification quality and conformance to a SPEC → feature → task authoring flow",
+      "version": "0.1.3",
       "license": "GPL-3.0"
     },
     {
