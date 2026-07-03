@@ -39,9 +39,9 @@ Write JUnit 5 unit tests for Java classes. Assert with **AssertJ**, create test 
 - **One behaviour per test.** Structure each test as Arrange / Act / Assert (Given / When /
   Then). Keep a single logical assertion focus per test; use AssertJ's soft assertions
   (`SoftAssertions` / `assertThatCode`) rather than sprawling unrelated checks.
-- **Keep it a unit test.** No Spring context, database, network, or filesystem — substitute
-  collaborators with stubs. Make tests deterministic (inject clocks, seeds, and IDs rather
-  than reading `now()` or random inside the test).
+- **Keep it a unit test.** No framework application context, database, network, or filesystem —
+  substitute collaborators with stubs. Make tests deterministic (inject clocks, seeds, and IDs
+  rather than reading `now()` or random inside the test).
 
 ## Format
 
