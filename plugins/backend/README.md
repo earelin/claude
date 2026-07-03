@@ -1,12 +1,17 @@
 # backend
 
-A Claude Code plugin for reviewing backend pull requests and code changes.
+A Claude Code plugin for reviewing and refactoring backend pull requests and code changes.
 
-- **Skill** — `backend:backend-review`, a model-invoked skill that analyzes a backend pull
-  request against a structured checklist (code structure, data structures, design smells,
-  software architecture, naming & formatting, comments, concurrency & performance, security,
-  testing, API & contracts, data & persistence, error handling, observability, dependencies,
-  and change scope) and reports actionable feedback.
+- **Agent** — `code-reviewer`, a principal-level reviewer for backend code changes in any
+  language or framework. It scopes the diff, reads the project conventions, scores every
+  issue for confidence, and reports only high-confidence findings (correctness & business
+  logic, architecture & boundaries, data & transactions, concurrency & scaling, security,
+  API contract & testing). Read-only — it never edits files.
+- **Agent** — `refactoring`, a principal backend engineer that iteratively improves the
+  internal structure of the code a PR or branch adds or modifies over small,
+  behaviour-preserving passes. It keeps the public API, data contract, and query semantics
+  identical, gates every pass on a known-green safety net, caps at five passes, and prints a
+  summary in the terminal.
 
 ## Install
 
@@ -17,8 +22,9 @@ A Claude Code plugin for reviewing backend pull requests and code changes.
 
 ## Usage
 
-Ask Claude to "review this pull request" or "review these changes" (paste or point to the
-diff) to trigger the `backend-review` skill.
+Ask Claude to "review this backend pull request" or "review these changes" to invoke the
+`code-reviewer` agent, or "refactor the backend code of this branch" to invoke the
+`refactoring` agent.
 
 ## Structure
 
@@ -26,7 +32,7 @@ diff) to trigger the `backend-review` skill.
 backend/
 ├── .claude-plugin/
 │   └── plugin.json          # plugin manifest
-└── skills/
-    └── backend-review/
-        └── SKILL.md         # model-invoked skill
+└── agents/
+    ├── code-reviewer.md     # read-only backend reviewer
+    └── refactoring.md       # behaviour-preserving backend refactorer
 ```

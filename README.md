@@ -16,10 +16,11 @@ plugins you can add to Claude Code and install from.
 | [`github`](plugins/github) | Skills for creating and reading GitHub pull requests and issues with the `gh` CLI. |
 | [`specs`](plugins/specs) | A `specs-review` skill that reviews specification quality. |
 | [`architecture`](plugins/architecture) | An `architecture-review` skill that reviews architecture and design quality. |
-| [`backend`](plugins/backend) | A `backend-review` skill and a `pr-review` agent for reviewing backend pull requests. |
+| [`backend`](plugins/backend) | A `code-reviewer` agent and a `refactoring` agent for reviewing and refactoring backend pull requests. |
+| [`frontend`](plugins/frontend) | A `code-reviewer` agent and a `refactoring` agent for reviewing and refactoring frontend pull requests. |
 
-The `specs`, `architecture`, and `backend` plugins depend on `github`, so installing any of
-them also installs `github`.
+The `specs`, `architecture`, `backend`, and `frontend` plugins depend on `github`, so
+installing any of them also installs `github`.
 
 Install a plugin with:
 
@@ -39,7 +40,8 @@ Then run `/reload-plugins` (or restart Claude Code) to activate it.
     ├── github/
     ├── specs/
     ├── architecture/
-    └── backend/
+    ├── backend/
+    └── frontend/
 ```
 
 ## Adding a new plugin
@@ -57,13 +59,13 @@ Then run `/reload-plugins` (or restart Claude Code) to activate it.
    Only `plugin.json` belongs inside `.claude-plugin/`; everything else lives at the
    plugin root.
 4. Register the plugin in [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json)
-   by adding an entry to the `plugins` array. Because `metadata.pluginRoot` is set to
-   `./plugins`, the `source` is just the folder name:
+   by adding an entry to the `plugins` array. The `source` is the path from the repo root,
+   including the `./plugins/` prefix:
 
    ```json
    {
      "name": "my-plugin",
-     "source": "./my-plugin",
+     "source": "./plugins/my-plugin",
      "description": "What it does",
      "version": "0.1.0",
      "license": "GPL-3.0"

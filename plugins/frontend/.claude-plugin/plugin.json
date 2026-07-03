@@ -1,13 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "backend",
-  "description": "Backend plugin for Claude",
-  "version": "0.4.0",
+  "name": "frontend",
+  "description": "Frontend plugin for Claude",
+  "version": "0.1.0",
   "dependencies": ["github"],
   "author": {
     "name": "earelin",
     "email": "xavier.carriba@gmail.com"
   },
   "license": "GPL-3.0",
-  "keywords": ["backend", "review"]
+  "keywords": ["frontend", "review"]
 }
