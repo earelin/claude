@@ -20,6 +20,10 @@ A Claude Code plugin for reviewing and refactoring backend changes on the curren
   interactions with external processes: Testcontainers for real dependencies, AssertJ (with
   AssertJ DB for database state), REST-assured for controller endpoints, snake_case test method
   names, kept in a separate integration source set.
+- **Skill** — `java-acceptance-test`, guidance for writing Java acceptance tests that run the
+  whole application against mocked downstream services, fixed database datasets, and file
+  fixtures, covering high-value user scenarios end to end: AssertJ for assertions, REST-assured
+  for HTTP APIs, snake_case test method names, kept in a dedicated module or source set.
 
 ## Install
 
@@ -33,8 +37,9 @@ A Claude Code plugin for reviewing and refactoring backend changes on the curren
 Ask Claude to "review the backend changes on this branch" (or "review this backend pull
 request") to invoke the `code-reviewer` agent, or "refactor the backend code of this branch"
 to invoke the `refactoring` agent. Ask Claude to "write unit tests for this Java class" to
-invoke the `java-unit-test` skill, or "write integration tests for this repository/controller"
-to invoke the `java-integration-test` skill.
+invoke the `java-unit-test` skill, "write integration tests for this repository/controller"
+to invoke the `java-integration-test` skill, or "write acceptance tests for this user scenario"
+to invoke the `java-acceptance-test` skill.
 
 ## Structure
 
@@ -48,6 +53,8 @@ backend/
 └── skills/
     ├── java-unit-test/
     │   └── SKILL.md         # writing Java unit tests (AssertJ + Mockito)
-    └── java-integration-test/
-        └── SKILL.md         # writing Java integration tests (Testcontainers, AssertJ DB, REST-assured)
+    ├── java-integration-test/
+    │   └── SKILL.md         # writing Java integration tests (Testcontainers, AssertJ DB, REST-assured)
+    └── java-acceptance-test/
+        └── SKILL.md         # writing Java acceptance tests (whole app, mocked downstreams, AssertJ, REST-assured)
 ```
