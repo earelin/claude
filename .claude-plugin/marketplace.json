@@ -31,21 +31,21 @@
     {
       "name": "backend",
       "source": "./plugins/backend",
-      "description": "Backend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring backend pull requests",
+      "description": "Backend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring backend changes on the current branch or a pull request",
       "version": "0.4.0",
       "license": "GPL-3.0"
     },
     {
       "name": "frontend",
       "source": "./plugins/frontend",
-      "description": "Frontend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring frontend pull requests",
+      "description": "Frontend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring frontend changes on the current branch or a pull request",
       "version": "0.1.0",
       "license": "GPL-3.0"
     },
     {
       "name": "devops",
       "source": "./plugins/devops",
-      "description": "DevOps plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring CI/CD pipelines and infrastructure-as-code",
+      "description": "DevOps plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring CI/CD pipeline and infrastructure-as-code changes on the current branch or a pull request",
       "version": "0.1.0",
       "license": "GPL-3.0"
     }
