@@ -31,7 +31,7 @@
     {
       "name": "backend",
       "source": "./plugins/backend",
-      "description": "Backend plugin: a backend-review skill and a pr-review agent for reviewing backend pull requests",
+      "description": "Backend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring backend pull requests",
       "version": "0.4.0",
       "license": "GPL-3.0"
     },
