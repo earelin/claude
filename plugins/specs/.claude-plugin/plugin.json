@@ -2,12 +2,12 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "specs",
   "description": "Specifications plugin for Claude",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "dependencies": ["github"],
   "author": {
     "name": "earelin",
     "email": "xavier.carriba@gmail.com"
   },
   "license": "GPL-3.0",
-  "keywords": ["specifications", "design", "requirements"]
+  "keywords": ["specifications", "features", "tasks", "design", "requirements"]
 }

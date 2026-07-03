@@ -14,7 +14,7 @@ plugins you can add to Claude Code and install from.
 | Plugin | Description |
 | ------ | ----------- |
 | [`github`](plugins/github) | Skills for creating and reading GitHub pull requests and issues with the `gh` CLI. |
-| [`specs`](plugins/specs) | A `specs-review` skill that reviews specification quality. |
+| [`specs`](plugins/specs) | Skills to author and review specs, features, and tasks in a traceable SPEC → feature → task flow. |
 | [`architecture`](plugins/architecture) | An `architecture-review` skill that reviews architecture and design quality. |
 | [`backend`](plugins/backend) | A `code-reviewer` agent and a `refactoring` agent for reviewing and refactoring backend changes on the current branch or a pull request. |
 | [`frontend`](plugins/frontend) | A `code-reviewer` agent and a `refactoring` agent for reviewing and refactoring frontend changes on the current branch or a pull request. |
