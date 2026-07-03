@@ -14,11 +14,15 @@ into small tasks.
 - **Skill** — `specs:create-task`, authors `TASK-NNNN` files under `docs/tasks/FEAT-NNNN/`, the
   smallest self-contained slice of a feature, tracing up to a spec and recording ordering in
   `depends_on:`.
-- **Skill** — `specs:specs-review`, analyzes a specification against a structured checklist
-  (level of abstraction, requirements quality, testable acceptance criteria, breadth &
-  stability, traceability, and format/conventions) and reports actionable feedback — checking a
-  spec stays at the *what* level and pushes design, sequencing, and decisions down to features,
-  tasks, and ADRs.
+- **Skill** — `specs:specs-review`, reviews a `SPEC-NNNN` against a structured checklist (level
+  of abstraction, requirements quality, testable acceptance criteria, breadth & stability,
+  traceability, and format/conventions) — checking a spec stays at the *what* level and is ready
+  to spawn features.
+- **Skill** — `specs:feature-review`, reviews a `FEAT-NNNN` for design quality, traceability to
+  its spec and ADRs, a genuine slice scope, and a sound breakdown into small tasks.
+- **Skill** — `specs:task-review`, reviews a `TASK-NNNN` for small self-contained scope,
+  traceability up to its feature and spec, testable acceptance criteria, and correct
+  `depends_on:` ordering.
 
 ## Install
 
@@ -33,6 +37,8 @@ into small tasks.
 - "Turn this into a feature" / "draft FEAT-… for this spec" → `create-feature`.
 - "Break this feature into tasks" / "create the tasks for FEAT-…" → `create-task`.
 - "Review this specification" (paste or point to the spec) → `specs-review`.
+- "Review this feature" / "is FEAT-… ready to build?" → `feature-review`.
+- "Review this task" / "is TASK-… ready to pick up?" → `task-review`.
 
 ## Structure
 
@@ -47,6 +53,10 @@ specs/
     │   └── SKILL.md         # author a FEAT-NNNN
     ├── create-task/
     │   └── SKILL.md         # author TASK-NNNN files
-    └── specs-review/
-        └── SKILL.md         # review a specification
+    ├── specs-review/
+    │   └── SKILL.md         # review a SPEC-NNNN
+    ├── feature-review/
+    │   └── SKILL.md         # review a FEAT-NNNN
+    └── task-review/
+        └── SKILL.md         # review a TASK-NNNN
 ```

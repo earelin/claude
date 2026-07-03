@@ -13,6 +13,10 @@ significant decisions are captured as **ADRs**. A good spec is broad, stable, an
 it stays at the what level and pushes design, sequencing, and decisions down to features, tasks,
 and ADRs.
 
+This skill reviews the **spec document itself**. Reviewing a feature's design or a task's scope
+is the job of the `feature-review` and `task-review` skills — here, only judge whether the spec
+is sound and ready to spawn features.
+
 Use the criteria below as a checklist. They are independent prompts, not sequential steps —
 work through the ones relevant to the specification under review (not every question applies
 to every spec).
