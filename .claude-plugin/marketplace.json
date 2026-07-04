@@ -31,8 +31,8 @@
     {
       "name": "frontend",
       "source": "./plugins/frontend",
-      "description": "Frontend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring frontend changes on the current branch or a pull request",
-      "version": "0.1.1",
+      "description": "Frontend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring frontend changes on the current branch or a pull request, plus typescript-unit-test, react-component-test, and frontend-acceptance-test skills for writing Vitest and Playwright tests",
+      "version": "0.4.0",
       "license": "GPL-3.0"
     },
     {
