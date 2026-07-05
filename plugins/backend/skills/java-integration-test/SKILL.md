@@ -50,6 +50,11 @@ methods in **snake_case**, and keep them in a dedicated **integration** source s
   RANDOM_PORT)` / `@MicronautTest`), **mock the controller's service dependencies** (so only
   the HTTP layer — routing, serialization, status codes, validation — is under test), and
   drive endpoints with **REST-assured** (`given()...when().get(...).then().statusCode(...)`).
+- **Mock with strict stubbing; never lenient, never `verify(...)`.** When you mock a
+  controller's collaborators, stub only what the endpoint needs with `when(...).thenReturn(...)`
+  / `.thenThrow(...)` and assert the HTTP response. Do not relax strictness with `lenient()` or
+  `Strictness.LENIENT`, and do not add `verify(...)` — a strict stub already fails the test if
+  the collaborator is never called, and the response body/status is what the test asserts on.
 - **Test method names are snake_case** describing the interaction — e.g.
   `persists_order_and_assigns_generated_id`, `returns_404_when_order_is_unknown`,
   `caches_lookup_result_for_configured_ttl`. No `test` prefix.

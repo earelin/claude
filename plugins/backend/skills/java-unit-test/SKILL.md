@@ -1,6 +1,6 @@
 ---
 name: java-unit-test
-description: Write JUnit unit tests for Java code using AssertJ assertions and Mockito for test doubles, with snake_case test method names and a preference for stubs over mocks. Use when the user wants to write, add, or scaffold Java unit tests, or asks how to test a Java class or method.
+description: Write JUnit unit tests for Java code using AssertJ assertions and Mockito for test doubles with strict stubbing (never lenient), snake_case test method names, and a preference for stubs and state assertions over mocks and verify. Use when the user wants to write, add, or scaffold Java unit tests, or asks how to test a Java class or method.
 ---
 
 # Write a Java unit test
@@ -13,8 +13,9 @@ Write JUnit 5 unit tests for Java classes. Assert with **AssertJ**, create test 
 1. Read the project's existing tests and build file (`pom.xml` / `build.gradle`) — the repo's
    own conventions, JUnit version, and available libraries win over this skill.
 2. Identify the unit under test and its collaborators. A collaborator you own and can control
-   through return values is a candidate for a **stub**; only reach for a mock when the
-   interaction itself is the behaviour being verified.
+   through return values is a candidate for a **stub**; when the interaction itself is the
+   behaviour, prefer a **recording fake** you can assert on with AssertJ over interaction
+   verification.
 3. Confirm AssertJ, Mockito, and JUnit are on the test classpath; if a needed dependency is
    missing, add it (or tell the user) before writing tests against it.
 
@@ -28,14 +29,20 @@ Write JUnit 5 unit tests for Java classes. Assert with **AssertJ**, create test 
   `returns_empty_list_when_no_orders_exist`, `throws_when_amount_is_negative`. No `test`
   prefix. Annotate with `@Test` (add `@DisplayName` only when a human-readable sentence adds
   value beyond the method name).
-- **Test doubles use Mockito.** Prefer annotation-driven setup (`@ExtendWith(MockitoExtension.class)`
-  with `@Mock` fields) or `mock(Type.class)`.
-- **Prefer stubs over mocks.** Default to configuring return values with `when(dep.call())
-  .thenReturn(...)` (or `doReturn`) and then asserting on the unit's output — state
-  verification. Only use interaction verification (`verify(...)`) when the side effect on a
-  collaborator *is* the contract under test (e.g. an event was published, a row was deleted)
-  and there is no observable return value to assert against. Do not add `verify(...)` calls
-  that merely restate a stubbing.
+- **Test doubles use Mockito with strict stubbing.** Prefer annotation-driven setup
+  (`@ExtendWith(MockitoExtension.class)` with `@Mock` fields) or `mock(Type.class)` — the
+  extension enables Mockito's default `STRICT_STUBS`. **Never relax it:** do not use
+  `lenient()` / `Mockito.lenient()`, `@MockitoSettings(strictness = Strictness.LENIENT)`, or
+  `withSettings().lenient()`. An unnecessary or unused stub is a signal the test or the code is
+  wrong — fix the cause, do not silence it with leniency.
+- **Prefer stubs, and let strict stubbing prove interactions instead of `verify(...)`.** Default
+  to configuring return values with `when(dep.call()).thenReturn(...)` (or `doReturn`) and then
+  asserting on the unit's output — state verification. Because strict stubbing fails the test
+  when a stubbed call never happens, a stub you assert against *already* proves the collaborator
+  was called with those arguments; a `verify(...)` would only restate it, so do not add one.
+  When the contract is a genuine side effect with no return value (an event published, a row
+  deleted), prefer a **recording fake** — a small hand-written test double that captures the
+  interaction — and assert on it with AssertJ, rather than reaching for `verify(...)`.
 - **One behaviour per test.** Structure each test as Arrange / Act / Assert (Given / When /
   Then). Keep a single logical assertion focus per test; use AssertJ's soft assertions
   (`SoftAssertions` / `assertThatCode`) rather than sprawling unrelated checks.
@@ -77,11 +84,16 @@ class OrderServiceTest {
 
     @Test
     void publishes_event_when_order_is_placed() {
-        // interaction verification is justified here: the published event is the contract,
-        // there is no return value to assert on
-        orderService.place(new Order(10));
+        // the published event is the contract and has no return value to assert on;
+        // a recording fake captures it so we assert state with AssertJ instead of verify(...)
+        RecordingEventPublisher events = new RecordingEventPublisher();
+        OrderService service = new OrderService(orderRepository, events);
 
-        verify(eventPublisher).publish(any(OrderPlacedEvent.class));
+        service.place(new Order(10));
+
+        assertThat(events.published())
+            .singleElement()
+            .isInstanceOf(OrderPlacedEvent.class);
     }
 }
 ```
@@ -92,8 +104,9 @@ class OrderServiceTest {
    values, thrown exceptions, and genuine side effects).
 2. Enumerate behaviours to cover: the happy path, boundary and edge cases, and each error /
    exception path.
-3. For each behaviour, write a snake_case `@Test`: arrange by stubbing collaborators, act on
-   the unit, and assert the output with AssertJ. Reserve `verify(...)` for contracts that are
-   purely a side effect.
+3. For each behaviour, write a snake_case `@Test`: arrange by stubbing collaborators (strict
+   stubbing, never `lenient()`), act on the unit, and assert the output with AssertJ. Let strict
+   stubbing prove interactions instead of `verify(...)`; for a pure side effect, assert on a
+   recording fake.
 4. Confirm the tests compile and pass (`mvn test` / `gradle test`), and summarise the
    behaviours covered for the user.
