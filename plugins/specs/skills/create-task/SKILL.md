@@ -1,25 +1,27 @@
 ---
 name: create-task
-description: Author a new task (TASK-NNNN) under docs/tasks/FEAT-NNNN/ — the smallest self-contained slice of a feature, traceable up to a spec. Use when the user wants to write, draft, or scaffold a task, or break a feature's sequencing into task files.
+description: Author a new task (TASK-NNNN) inside its feature folder docs/features/FEAT-NNNN-kebab-title/ — the smallest self-contained slice of a feature, traceable up to a spec. Use when the user wants to write, draft, or scaffold a task, or break a feature's sequencing into task files.
 ---
 
 # Create a task
 
-Author one or more `TASK-NNNN` files under `docs/tasks/FEAT-NNNN/`. A task is the **smallest
+Author one or more `TASK-NNNN` files inside the feature's own folder,
+`docs/features/FEAT-NNNN-kebab-title/`. A task is the **smallest
 traceable unit of work** — a small, self-contained change committed straight to `trunk`
 (trunk-based development, no long-lived branches or PRs). Tasks live on the filesystem, not on
 GitHub.
 
 ## Before you write
 
-1. Read `docs/tasks/CLAUDE.md` if present — the repo's own conventions win over this skill.
+1. Read `docs/features/CLAUDE.md` if present — the repo's own conventions win over this skill.
 2. **Every task must trace up:** `feat:` → parent feature → spec. Identify the parent
    `FEAT-NNNN`. If the feature (or its spec) is missing, **STOP and propose it first** (use
    `create-feature` / `create-spec`) — do not write a task against an untraced feature.
-3. Locate the feature's folder `docs/tasks/FEAT-NNNN/` (create it if this is its first task).
-   Prefer the feature doc's **Sequencing** section as the source of the task list.
-4. Determine the next number: `NNNN` restarts at `0001` within each `FEAT-NNNN/` folder — scan
-   that folder for the highest existing task and use the next value.
+3. Locate the feature's folder `docs/features/FEAT-NNNN-kebab-title/` (it already exists,
+   holding the feature's `README.md`). Prefer the feature `README.md`'s **Sequencing** section
+   as the source of the task list.
+4. Determine the next number: `NNNN` restarts at `0001` within each feature folder — scan that
+   folder for the highest existing task and use the next value.
 
 ## Rules
 
@@ -34,7 +36,7 @@ GitHub.
 
 ## Format
 
-- Filename: `docs/tasks/FEAT-NNNN/TASK-NNNN-kebab-title.md`.
+- Filename: `docs/features/FEAT-NNNN-kebab-title/TASK-NNNN-kebab-title.md`.
 - Frontmatter:
   ```yaml
   ---
@@ -63,7 +65,8 @@ GitHub.
 1. Confirm the parent feature exists; if not, stop and propose it first.
 2. For each task in the feature's sequencing (or the one the user asked for), draft it following
    the format above, keeping the change small and self-contained.
-3. Write each to `docs/tasks/FEAT-NNNN/TASK-NNNN-kebab-title.md` with `status: todo`, recording
+3. Write each to `docs/features/FEAT-NNNN-kebab-title/TASK-NNNN-kebab-title.md` with
+   `status: todo`, recording
    any ordering in `depends_on:`.
 4. Summarise for the user: the tasks created, their dependency order, and which spec criteria
    they cover.

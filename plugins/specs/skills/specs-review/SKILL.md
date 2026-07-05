@@ -8,7 +8,7 @@ description: Review a specification for quality and conformance to the SPEC → 
 Analyze a specification and provide structured, actionable feedback on its quality and its
 fitness within a traceable authoring flow: a **spec** (`SPEC-NNNN`) describes a capability at
 the **what** level; each buildable slice becomes a **feature** (`FEAT-NNNN`) where design lives;
-each feature is cut into small **tasks** (`docs/tasks/FEAT-NNNN/TASK-NNNN`); and architecturally
+each feature is cut into small **tasks** (`docs/features/FEAT-NNNN-kebab-title/TASK-NNNN`); and architecturally
 significant decisions are captured as **ADRs**. A good spec is broad, stable, and verifiable —
 it stays at the what level and pushes design, sequencing, and decisions down to features, tasks,
 and ADRs.

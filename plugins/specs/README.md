@@ -9,11 +9,12 @@ into small tasks.
   *what* level with testable acceptance criteria, kept broad and stable so it can spawn many
   features.
 - **Skill** — `specs:create-feature`, authors a new `FEAT-NNNN` — a buildable slice of a spec
-  where design decisions live — broken into a sequence of tasks. Stops and proposes a spec (or
-  an ADR) first if the work is untraced.
-- **Skill** — `specs:create-task`, authors `TASK-NNNN` files under `docs/tasks/FEAT-NNNN/`, the
-  smallest self-contained slice of a feature, tracing up to a spec and recording ordering in
-  `depends_on:`.
+  where design decisions live — as a folder under `docs/features/` whose `README.md` holds the
+  description, broken into a sequence of tasks. Stops and proposes a spec (or an ADR) first if
+  the work is untraced.
+- **Skill** — `specs:create-task`, authors `TASK-NNNN` files inside the feature folder
+  `docs/features/FEAT-NNNN-kebab-title/`, the smallest self-contained slice of a feature, tracing
+  up to a spec and recording ordering in `depends_on:`.
 - **Skill** — `specs:specs-review`, reviews a `SPEC-NNNN` against a structured checklist (level
   of abstraction, requirements quality, testable acceptance criteria, breadth & stability,
   traceability, and format/conventions) — checking a spec stays at the *what* level and is ready

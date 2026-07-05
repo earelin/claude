@@ -58,7 +58,7 @@ feature).
 
 ### Format & conventions
 
-- Filename follows `FEAT-NNNN-kebab-title.md` with a sequential `NNNN`.
+- Layout follows `docs/features/FEAT-NNNN-kebab-title/README.md` with a sequential `NNNN`.
 - Frontmatter present: `spec:` (required), `adrs:` (if any), valid `status:` (`draft` | `active`
   | `implemented`).
 - Diagrams are Mermaid fenced blocks (never ASCII art); only folder/file trees use indented text
@@ -67,8 +67,8 @@ feature).
 ## Producing the review
 
 1. Read the feature thoroughly before judging it. Read its parent spec and cited ADRs, and skim
-   the folder conventions (`docs/features/CLAUDE.md`) and any existing tasks under
-   `docs/tasks/FEAT-NNNN/`.
+   the folder conventions (`docs/features/CLAUDE.md`) and any existing tasks in the feature
+   folder `docs/features/FEAT-NNNN-kebab-title/`.
 2. Work through the relevant criteria above, gathering observations for each category.
 3. Report findings grouped by the categories above. For each finding, note its
    severity/priority and give a concrete, actionable suggestion — including *where* content

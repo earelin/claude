@@ -6,7 +6,8 @@ description: Review a task (TASK-NNNN) for small self-contained scope, traceabil
 # Task Review skill
 
 Analyze a task document and provide structured, actionable feedback on its quality. A **task**
-(`TASK-NNNN`, under `docs/tasks/FEAT-NNNN/`) is the smallest traceable unit of work — a small,
+(`TASK-NNNN`, inside its feature folder `docs/features/FEAT-NNNN-kebab-title/`) is the smallest
+traceable unit of work — a small,
 self-contained change committed straight to `trunk`. A good task traces up to a feature (and
 through it to a spec), touches a bounded, clearly scoped surface, carries testable acceptance
 criteria that cite the spec or feature, and records its ordering in `depends_on:` rather than
@@ -57,8 +58,8 @@ task).
 
 ### Format & conventions
 
-- Filename follows `TASK-NNNN-kebab-title.md`, with `NNNN` sequential **within** the
-  `docs/tasks/FEAT-NNNN/` folder.
+- Filename follows `TASK-NNNN-kebab-title.md`, with `NNNN` sequential **within** the feature
+  folder `docs/features/FEAT-NNNN-kebab-title/`.
 - Frontmatter present: `feat:` (required), `adrs:` (if any), `status:`, `depends_on:`.
 - Diagrams are Mermaid fenced blocks (never ASCII art); only folder/file trees use indented text
   blocks.
@@ -67,7 +68,7 @@ task).
 
 1. Read the task thoroughly before judging it. Read its parent feature (especially the
    sequencing section), the spec criteria it cites, and skim the folder conventions
-   (`docs/tasks/CLAUDE.md`) and any sibling tasks it depends on.
+   (`docs/features/CLAUDE.md`) and any sibling tasks it depends on.
 2. Work through the relevant criteria above, gathering observations for each category.
 3. Report findings grouped by the categories above. For each finding, note its
    severity/priority and give a concrete, actionable suggestion — including whether the task
