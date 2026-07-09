@@ -6,7 +6,8 @@ description: >-
   Scores every issue for confidence and reports only high-confidence
   findings. Returns findings only; never edits files.
 tools: Read, Grep, Glob, Bash
-model: claude-opus-4-8
+model: opus
+effort: xhigh
 color: cyan
 ---
 

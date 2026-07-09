@@ -7,6 +7,7 @@ description: >-
   reports only high-confidence findings. Returns findings only; never edits files.
 tools: Read, Grep, Glob, Bash
 model: opus
+effort: xhigh
 color: cyan
 ---
 
