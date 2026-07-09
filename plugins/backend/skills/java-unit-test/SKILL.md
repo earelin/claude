@@ -56,45 +56,45 @@ Write JUnit 5 unit tests for Java classes. Assert with **AssertJ**, create test 
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest {
 
-    @Mock
-    private OrderRepository orderRepository;   // stubbed collaborator
+  @Mock
+  private OrderRepository orderRepository; // stubbed collaborator
 
-    @InjectMocks
-    private OrderService orderService;
+  @InjectMocks
+  private OrderService orderService;
 
-    @Test
-    void returns_total_of_all_orders_for_customer() {
-        // given — stub the collaborator's return value
-        when(orderRepository.findByCustomer("c-1"))
-            .thenReturn(List.of(new Order(10), new Order(15)));
+  @Test
+  void returns_total_of_all_orders_for_customer() {
+    // given — stub the collaborator's return value
+    when(orderRepository.findByCustomer("c-1"))
+        .thenReturn(List.of(new Order(10), new Order(15)));
 
-        // when
-        int total = orderService.totalFor("c-1");
+    // when
+    int total = orderService.totalFor("c-1");
 
-        // then — assert on the unit's output with AssertJ
-        assertThat(total).isEqualTo(25);
-    }
+    // then — assert on the unit's output with AssertJ
+    assertThat(total).isEqualTo(25);
+  }
 
-    @Test
-    void throws_when_customer_id_is_blank() {
-        assertThatThrownBy(() -> orderService.totalFor(""))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining("customer");
-    }
+  @Test
+  void throws_when_customer_id_is_blank() {
+    assertThatThrownBy(() -> orderService.totalFor(""))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("customer");
+  }
 
-    @Test
-    void publishes_event_when_order_is_placed() {
-        // the published event is the contract and has no return value to assert on;
-        // a recording fake captures it so we assert state with AssertJ instead of verify(...)
-        RecordingEventPublisher events = new RecordingEventPublisher();
-        OrderService service = new OrderService(orderRepository, events);
+  @Test
+  void publishes_event_when_order_is_placed() {
+    // the published event is the contract and has no return value to assert on;
+    // a recording fake captures it so we assert state with AssertJ instead of verify(...)
+    RecordingEventPublisher events = new RecordingEventPublisher();
+    OrderService service = new OrderService(orderRepository, events);
 
-        service.place(new Order(10));
+    service.place(new Order(10));
 
-        assertThat(events.published())
-            .singleElement()
-            .isInstanceOf(OrderPlacedEvent.class);
-    }
+    assertThat(events.published())
+        .singleElement()
+        .isInstanceOf(OrderPlacedEvent.class);
+  }
 }
 ```
 

@@ -70,24 +70,24 @@ Repository test against a real database (Testcontainers + AssertJ DB):
 @Testcontainers
 class OrderRepositoryIntegrationTest {
 
-    @Container
-    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16");
+  @Container
+  static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16");
 
-    private DataSource dataSource;          // pointed at postgres.getJdbcUrl()
-    private OrderRepository orderRepository;
+  private DataSource dataSource; // pointed at postgres.getJdbcUrl()
+  private OrderRepository orderRepository;
 
-    @Test
-    void persists_order_and_assigns_generated_id() {
-        // when
-        long id = orderRepository.save(new Order("c-1", 25));
+  @Test
+  void persists_order_and_assigns_generated_id() {
+    // when
+    long id = orderRepository.save(new Order("c-1", 25));
 
-        // then — assert the row directly with AssertJ DB
-        Table orders = new Table(dataSource, "orders");
-        assertThat(orders).row(0)
-            .value("id").isEqualTo(id)
-            .value("customer_id").isEqualTo("c-1")
-            .value("amount").isEqualTo(25);
-    }
+    // then — assert the row directly with AssertJ DB
+    Table orders = new Table(dataSource, "orders");
+    assertThat(orders).row(0)
+        .value("id").isEqualTo(id)
+        .value("customer_id").isEqualTo("c-1")
+        .value("amount").isEqualTo(25);
+  }
 }
 ```
 
@@ -97,34 +97,34 @@ Controller test (framework web server up, dependencies mocked, driven with REST-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class OrderControllerIntegrationTest {
 
-    @LocalServerPort
-    int port;
+  @LocalServerPort
+  int port;
 
-    @MockBean
-    OrderService orderService;              // controller collaborator is mocked
+  @MockBean
+  OrderService orderService; // controller collaborator is mocked
 
-    @Test
-    void returns_order_as_json_when_it_exists() {
-        when(orderService.findById("o-1")).thenReturn(new Order("c-1", 25));
+  @Test
+  void returns_order_as_json_when_it_exists() {
+    when(orderService.findById("o-1")).thenReturn(new Order("c-1", 25));
 
-        given()
-            .port(port)
-        .when()
-            .get("/orders/o-1")
-        .then()
-            .statusCode(200)
-            .body("customerId", equalTo("c-1"))
-            .body("amount", equalTo(25));
-    }
+    given()
+        .port(port)
+    .when()
+        .get("/orders/o-1")
+    .then()
+        .statusCode(200)
+        .body("customerId", equalTo("c-1"))
+        .body("amount", equalTo(25));
+  }
 
-    @Test
-    void returns_404_when_order_is_unknown() {
-        when(orderService.findById("nope")).thenThrow(new OrderNotFoundException());
+  @Test
+  void returns_404_when_order_is_unknown() {
+    when(orderService.findById("nope")).thenThrow(new OrderNotFoundException());
 
-        given().port(port)
-        .when().get("/orders/nope")
-        .then().statusCode(404);
-    }
+    given().port(port)
+    .when().get("/orders/nope")
+    .then().statusCode(404);
+  }
 }
 ```
 

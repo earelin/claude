@@ -120,71 +120,72 @@ dataset, asserted with AssertJ.
 ```java
 class PlaceOrderAcceptanceTest {
 
-    // the app is started separately (docker-compose / container / deployed env);
-    // the test only receives its address and the stub server's address as configuration.
-    static final String BASE_URL       = System.getProperty("app.baseUrl");        // e.g. http://localhost:8080
-    static final String PAYMENT_STUB   = System.getProperty("paymentStub.baseUrl"); // e.g. http://localhost:9999
+  // the app is started separately (docker-compose / container / deployed env);
+  // the test only receives its address and the stub server's address as configuration.
+  static final String BASE_URL = System.getProperty("app.baseUrl"); // e.g. http://localhost:8080
+  static final String PAYMENT_STUB =
+      System.getProperty("paymentStub.baseUrl"); // e.g. http://localhost:9999
 
-    // external stub the running application is configured to call for payments
-    static WireMock paymentGateway;
+  // external stub the running application is configured to call for payments
+  static WireMock paymentGateway;
 
-    @BeforeAll
-    static void connect() {
-        RestAssured.baseURI = BASE_URL;                        // black-box: drive it over the wire
-        paymentGateway = new WireMock(URI.create(PAYMENT_STUB).getHost(),
-                                      URI.create(PAYMENT_STUB).getPort());
-    }
+  @BeforeAll
+  static void connect() {
+    RestAssured.baseURI = BASE_URL; // black-box: drive it over the wire
+    paymentGateway =
+        new WireMock(URI.create(PAYMENT_STUB).getHost(), URI.create(PAYMENT_STUB).getPort());
+  }
 
-    @BeforeEach
-    void seed_fixed_dataset() {
-        // load the known dataset into the running instance's database, then reset the stub
-        DatasetSupport.load("/datasets/catalog.sql");
-        paymentGateway.resetMappings();
-    }
+  @BeforeEach
+  void seed_fixed_dataset() {
+    // load the known dataset into the running instance's database, then reset the stub
+    DatasetSupport.load("/datasets/catalog.sql");
+    paymentGateway.resetMappings();
+  }
 
-    @Test
-    void customer_places_order_and_receives_confirmation() {
-        // given — the downstream payment gateway approves the charge
-        paymentGateway.register(post(urlEqualTo("/charges"))
-            .willReturn(okJson("{ \"status\": \"APPROVED\", \"id\": \"pay-1\" }")));
+  @Test
+  void customer_places_order_and_receives_confirmation() {
+    // given — the downstream payment gateway approves the charge
+    paymentGateway.register(post(urlEqualTo("/charges"))
+        .willReturn(okJson("{ \"status\": \"APPROVED\", \"id\": \"pay-1\" }")));
 
-        // when — drive the whole running application through its public HTTP API
-        String orderId =
-            given()
-                .contentType("application/json")
-                .body("{ \"sku\": \"BOOK-1\", \"quantity\": 2 }")
-            .when()
-                .post("/orders")
-            .then()
-                .statusCode(201)
-                .extract().path("id");
-
-        // then — the user-visible outcome: the order is confirmed and readable back
-        OrderView order =
-            when().get("/orders/{id}", orderId)
-            .then().statusCode(200)
-            .extract().as(OrderView.class);
-
-        assertThat(order.status()).isEqualTo("CONFIRMED");
-        assertThat(order.lines()).extracting(Line::sku).containsExactly("BOOK-1");
-
-        // and the downstream was actually asked to charge the customer
-        paymentGateway.verifyThat(postRequestedFor(urlEqualTo("/charges")));
-    }
-
-    @Test
-    void checkout_is_rejected_when_payment_gateway_declines() {
-        paymentGateway.register(post(urlEqualTo("/charges"))
-            .willReturn(okJson("{ \"status\": \"DECLINED\" }")));
-
+    // when — drive the whole running application through its public HTTP API
+    String orderId =
         given()
             .contentType("application/json")
             .body("{ \"sku\": \"BOOK-1\", \"quantity\": 2 }")
         .when()
             .post("/orders")
         .then()
-            .statusCode(402);
-    }
+            .statusCode(201)
+            .extract().path("id");
+
+    // then — the user-visible outcome: the order is confirmed and readable back
+    OrderView order =
+        when().get("/orders/{id}", orderId)
+        .then().statusCode(200)
+        .extract().as(OrderView.class);
+
+    assertThat(order.status()).isEqualTo("CONFIRMED");
+    assertThat(order.lines()).extracting(Line::sku).containsExactly("BOOK-1");
+
+    // and the downstream was actually asked to charge the customer
+    paymentGateway.verifyThat(postRequestedFor(urlEqualTo("/charges")));
+  }
+
+  @Test
+  void checkout_is_rejected_when_payment_gateway_declines() {
+    paymentGateway.register(post(urlEqualTo("/charges"))
+        .willReturn(okJson("{ \"status\": \"DECLINED\" }")));
+
+    given()
+        .contentType("application/json")
+        .body("{ \"sku\": \"BOOK-1\", \"quantity\": 2 }")
+    .when()
+        .post("/orders")
+    .then()
+        .statusCode(402);
+  }
 }
 ```
 
