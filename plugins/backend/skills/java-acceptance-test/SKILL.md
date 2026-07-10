@@ -1,6 +1,6 @@
 ---
 name: java-acceptance-test
-description: Write Java acceptance tests that exercise a real running instance of the whole application as a black box — no framework test runner — against mocked downstream services, fixed database datasets, and file fixtures, covering high-value user scenarios end to end. Asserts with AssertJ, drives HTTP APIs with REST-assured, uses snake_case test method names, and lives in a dedicated module or source set. Use when the user wants to write, add, or scaffold Java acceptance (end-to-end / black-box) tests, or asks how to test a full user scenario against a running application instance.
+description: Use before writing, adding, or scaffolding a Java acceptance test — an end-to-end / black-box test driving a real running instance of the whole application over the wire to cover a full user scenario — whether the user asked or you decided to add one while coding. For a single class or method in isolation with test doubles use java-unit-test; for one repository, client, or controller against a real dependency use java-integration-test.
 ---
 
 # Write a Java acceptance test

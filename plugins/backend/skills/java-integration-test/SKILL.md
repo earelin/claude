@@ -1,6 +1,6 @@
 ---
 name: java-integration-test
-description: Write Java integration tests that exercise interactions with external processes — databases, cache servers, HTTP clients, and the application's own controllers — using Testcontainers, AssertJ (with AssertJ DB for database state), REST-assured for controller endpoints, and snake_case test method names, kept in a separate integration source set. Use when the user wants to write, add, or scaffold Java integration tests, or asks how to test a repository, client, or controller against a real dependency.
+description: Use before writing, adding, or scaffolding a Java integration test — a test exercising a repository, DAO, cache client, message consumer/producer, outbound HTTP client, or controller endpoint against a real dependency rather than a mock — whether the user asked or you decided to add one while coding. For a single class or method in isolation with test doubles use java-unit-test; for the whole running application use java-acceptance-test.
 ---
 
 # Write a Java integration test

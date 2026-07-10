@@ -1,6 +1,6 @@
 ---
 name: java-unit-test
-description: Write JUnit unit tests for Java code using AssertJ assertions and Mockito for test doubles with strict stubbing (never lenient), snake_case test method names, and a preference for stubs and state assertions over mocks and verify. Use when the user wants to write, add, or scaffold Java unit tests, or asks how to test a Java class or method.
+description: Use before writing, adding, or scaffolding a Java unit test — a test exercising a single class or method in isolation with collaborators replaced by test doubles — whether the user asked or you decided to add one while coding. For a real database, cache, broker, HTTP client, or controller use java-integration-test; for the whole running application use java-acceptance-test.
 ---
 
 # Write a Java unit test
