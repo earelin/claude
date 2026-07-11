@@ -29,12 +29,14 @@ Current plugins:
 - `github` — the `github-*` family of PR/issue skills wrapping `gh` CLI workflows.
 - `specs` — a `specs-review` skill.
 - `architecture` — an `architecture-review` skill.
-- `backend` — two agents: `code-reviewer` (read-only, confidence-scored reviewer) and
-  `refactoring` (behaviour-preserving refactorer).
-- `frontend` — the same two-agent pair (`code-reviewer`, `refactoring`), adapted to
-  client-side concerns.
+- `backend` — a `code-reviewer` agent (read-only, confidence-scored reviewer) plus a
+  `backend-refactoring` skill (behaviour-preserving refactorer), and the `java-*-test` skills.
+- `frontend` — the same shape (`code-reviewer` agent, `frontend-refactoring` skill), adapted to
+  client-side concerns, plus the `typescript-unit-test`/`react-component-test`/`frontend-acceptance-test` skills.
+- `devops` — the same shape (`code-reviewer` agent, `devops-refactoring` skill), for CI/CD
+  pipeline and infrastructure-as-code changes.
 
-The `specs`, `architecture`, `backend`, and `frontend` manifests declare
+The `specs`, `architecture`, `backend`, `frontend`, and `devops` manifests declare
 `"dependencies": ["github"]`, so installing any of them also installs `github`.
 
 ## Conventions
@@ -49,11 +51,15 @@ The `specs`, `architecture`, `backend`, and `frontend` manifests declare
   this style when adding or editing review skills.
 - **Agent definitions** (`agents/*.md`) have YAML frontmatter (`name`, `description`, `tools`,
   and optionally `model`/`color`/`modelTier`/`permissionMode`) followed by a system prompt.
-  `backend` and `frontend` share a deliberately parallel pair — `code-reviewer` (read-only,
-  scores each issue 0–100 and reports only findings ≥ 26) and `refactoring` (iterative,
-  behaviour-preserving, capped at five passes). When editing one plugin's agent, keep its
-  counterpart in the sibling plugin in sync; the two differ only in server-side vs.
-  client-side framing.
+  `backend`, `frontend`, and `devops` share a deliberately parallel `code-reviewer` agent
+  (read-only, scores each issue 0–100 and reports only findings ≥ 26). When editing one
+  plugin's `code-reviewer`, keep its counterparts in the sibling plugins in sync; they differ
+  only in server-side vs. client-side vs. delivery-path framing.
+- **The `*-refactoring` skills** (`backend-refactoring`, `frontend-refactoring`,
+  `devops-refactoring`) are the other parallel set — an iterative, behaviour-preserving
+  refactorer capped at five passes, gated on a known-green safety net, reporting only as a
+  terminal summary. Keep the three in sync when editing one; they differ only in the
+  domain lens (API/data contract vs. rendered output/component API vs. plan/pipeline graph).
 - **GitHub skills** (`plugins/github/skills/github-*`) wrap `gh` CLI workflows. They share
   precondition patterns: confirm wording before anything outward-facing (PRs, issues,
   comments), never open a PR from the default branch, and accept a PR/issue number, URL, or

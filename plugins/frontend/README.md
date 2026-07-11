@@ -8,7 +8,7 @@ A Claude Code plugin for reviewing and refactoring frontend changes on the curre
   issue for confidence, and reports only high-confidence findings (component logic, state &
   data flow, rendering & performance, accessibility, security, UX & contracts). Read-only —
   it never edits files.
-- **Agent** — `refactoring`, a principal frontend engineer that iteratively improves the
+- **Skill** — `frontend-refactoring`, a principal frontend engineer that iteratively improves the
   internal structure of the code the current branch (or a PR) adds or modifies over small,
   behaviour-preserving passes. It keeps rendered output, component API, and user-facing
   behaviour identical, gates every pass on a known-green safety net, caps at five passes,
@@ -38,7 +38,7 @@ A Claude Code plugin for reviewing and refactoring frontend changes on the curre
 
 Ask Claude to "review the frontend changes on this branch" (or "review this frontend pull
 request") to invoke the `code-reviewer` agent, or "refactor the frontend code of this branch"
-to invoke the `refactoring` agent. Ask Claude to "write unit tests for this TypeScript class"
+to invoke the `frontend-refactoring` skill. Ask Claude to "write unit tests for this TypeScript class"
 to invoke the `typescript-unit-test` skill, "write tests for this React component" to invoke
 the `react-component-test` skill, or "write acceptance tests for this user journey" to invoke
 the `frontend-acceptance-test` skill.
@@ -50,9 +50,10 @@ frontend/
 ├── .claude-plugin/
 │   └── plugin.json          # plugin manifest
 ├── agents/
-│   ├── code-reviewer.md     # read-only frontend reviewer
-│   └── refactoring.md       # behaviour-preserving frontend refactorer
+│   └── code-reviewer.md     # read-only frontend reviewer
 └── skills/
+    ├── frontend-refactoring/
+    │   └── SKILL.md         # behaviour-preserving frontend refactorer
     ├── typescript-unit-test/
     │   └── SKILL.md         # writing Vitest unit tests (plain TS functions & classes)
     ├── react-component-test/
