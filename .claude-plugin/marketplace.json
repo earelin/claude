@@ -11,7 +11,7 @@
       "name": "architecture",
       "source": "./plugins/architecture",
       "description": "Architecture plugin: an architecture-review skill plus create-adr and adr-review skills for authoring and reviewing Architecture Decision Records",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "license": "GPL-3.0"
     },
     {

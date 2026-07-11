@@ -59,8 +59,12 @@ task` flow: features and tasks reference the ADRs that constrain them in their `
   The choice made, stated plainly.
 
   ## Consequences
-  + Positive outcomes.
-  − Costs and tradeoffs accepted.
+
+  ### Pros
+  - Positive outcomes.
+
+  ### Cons
+  - Costs and tradeoffs accepted.
   ```
 
 ## Steps
