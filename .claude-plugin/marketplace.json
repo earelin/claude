@@ -18,21 +18,21 @@
       "name": "backend",
       "source": "./plugins/backend",
       "description": "Backend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring backend changes on the current branch or a pull request, plus java-unit-test, java-integration-test, and java-acceptance-test skills for writing Java tests",
-      "version": "0.7.6",
+      "version": "0.7.7",
       "license": "GPL-3.0"
     },
     {
       "name": "devops",
       "source": "./plugins/devops",
       "description": "DevOps plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring CI/CD pipeline and infrastructure-as-code changes on the current branch or a pull request",
-      "version": "0.1.3",
+      "version": "0.1.4",
       "license": "GPL-3.0"
     },
     {
       "name": "frontend",
       "source": "./plugins/frontend",
       "description": "Frontend plugin: a code-reviewer agent and a refactoring agent for reviewing and refactoring frontend changes on the current branch or a pull request, plus typescript-unit-test, react-component-test, and frontend-acceptance-test skills for writing Vitest and Playwright tests",
-      "version": "0.4.2",
+      "version": "0.4.3",
       "license": "GPL-3.0"
     },
     {
