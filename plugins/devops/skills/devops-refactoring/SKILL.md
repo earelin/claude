@@ -9,7 +9,6 @@ description: >-
   passes, then prints a summary of the changes in the terminal. Use when the user asks to
   refactor or clean up the pipeline or infrastructure code of the current branch (or a PR)
   without changing what it deploys or runs.
-context: fork
 ---
 
 # DevOps Refactoring skill
