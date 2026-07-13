@@ -7,6 +7,7 @@ description: >-
   safety net, guards against oscillation, caps at five passes, then prints a summary of the
   changes in the terminal. Use when the user asks to refactor or clean up the frontend code
   of the current branch (or a PR) without changing its behaviour.
+context: fork
 ---
 
 # Frontend Refactoring skill
