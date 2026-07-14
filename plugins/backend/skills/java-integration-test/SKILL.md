@@ -1,6 +1,6 @@
 ---
 name: java-integration-test
-description: Use before writing, adding, or scaffolding a Java integration test — a test exercising a repository, DAO, cache client, message consumer/producer, outbound HTTP client, or controller endpoint against a real dependency rather than a mock — whether the user asked or you decided to add one while coding. For a single class or method in isolation with test doubles use java-unit-test; for the whole running application use java-acceptance-test.
+description: Use when editing a Java integration test.
 ---
 
 # Write a Java integration test

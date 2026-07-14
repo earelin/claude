@@ -1,6 +1,6 @@
 ---
 name: java-unit-test
-description: Use before writing, adding, or scaffolding a Java unit test — a test exercising a single class or method in isolation with collaborators replaced by test doubles — whether the user asked or you decided to add one while coding. For a real database, cache, broker, HTTP client, or controller use java-integration-test; for the whole running application use java-acceptance-test.
+description: Use when editing Java unit tests.
 ---
 
 # Write a Java unit test

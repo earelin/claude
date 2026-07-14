@@ -1,6 +1,6 @@
 ---
 name: java-acceptance-test
-description: Use before writing, adding, or scaffolding a Java acceptance test — an end-to-end / black-box test driving a real running instance of the whole application over the wire to cover a full user scenario — whether the user asked or you decided to add one while coding. For a single class or method in isolation with test doubles use java-unit-test; for one repository, client, or controller against a real dependency use java-integration-test.
+description: Use when editing a Java acceptance test.
 ---
 
 # Write a Java acceptance test
