@@ -1,6 +1,8 @@
 ---
 name: java-acceptance-test
 description: Use when editing a Java acceptance test.
+paths:
+  - "**/acceptance/src/test/java/**/*Test.java"
 ---
 
 # Write a Java acceptance test

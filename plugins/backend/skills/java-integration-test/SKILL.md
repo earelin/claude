@@ -1,6 +1,8 @@
 ---
 name: java-integration-test
 description: Use when editing a Java integration test.
+paths:
+  - "**/src/integrationTest/java/**/*Test.java"
 ---
 
 # Write a Java integration test

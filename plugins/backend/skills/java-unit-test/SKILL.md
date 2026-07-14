@@ -1,6 +1,8 @@
 ---
 name: java-unit-test
 description: Use when editing Java unit tests.
+paths:
+  - "**/src/test/java/**/*Test.java"
 ---
 
 # Write a Java unit test
