@@ -1,6 +1,6 @@
 ---
 name: java-unit-test
-description: Use when editing Java unit tests.
+description: Write JUnit 5 unit tests for Java classes in isolation — no application context, database, or network — asserting with AssertJ, doubling collaborators with Mockito under strict stubbing, preferring stubs and recording fakes over mocks and verify(...), and naming test methods in snake_case. Use whenever writing, adding, scaffolding, reviewing, or fixing a Java unit test, or testing a Java class's business logic, branches, boundaries, or exception paths — including when the user just says "write tests" for a Java class. For tests that cross a process boundary (database, broker, controller over HTTP) use java-integration-test; for black-box scenarios against a running application use java-acceptance-test.
 paths:
   - "**/src/test/java/**/*Test.java"
 ---

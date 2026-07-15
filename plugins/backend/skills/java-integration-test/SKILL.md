@@ -1,6 +1,6 @@
 ---
 name: java-integration-test
-description: Use when editing a Java integration test.
+description: Write Java integration tests for interactions that cross a process boundary — repositories against a real database, caches, message brokers, outbound HTTP clients, and the application's own controllers over HTTP — standing real dependencies up in Testcontainers, driving endpoints with REST-assured, asserting with AssertJ and AssertJ DB, and living in a dedicated integration source set. Use whenever writing, adding, scaffolding, reviewing, or fixing a Java integration test, or testing a repository, DAO, controller, client, or Testcontainers-backed dependency. For business logic in isolation use java-unit-test; for black-box scenarios against a running application use java-acceptance-test.
 paths:
   - "**/src/integrationTest/java/**/*Test.java"
 ---
