@@ -1,8 +1,6 @@
 ---
 name: java-acceptance-test
-description: Write Java acceptance tests that drive a real running instance of the whole application as a black box over the wire — no framework test runner — with downstream services mocked by standalone stub servers (WireMock or similar), state pinned to fixed datasets and fixtures, endpoints driven by REST-assured, and assertions in AssertJ. Use whenever writing, adding, scaffolding, reviewing, or fixing a Java acceptance or end-to-end test, or testing a high-value user scenario against a deployed application. For business logic in isolation use java-unit-test; for a single external interaction such as a repository or controller use java-integration-test.
-paths:
-  - "**/acceptance/src/test/java/**/*Test.java"
+description: Write or edit a Java acceptance test.
 ---
 
 # Write a Java acceptance test
