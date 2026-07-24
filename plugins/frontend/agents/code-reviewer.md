@@ -50,10 +50,7 @@ Rate each candidate issue from 0-100:
 - **76-90**: Important issue requiring attention.
 - **91-100**: Critical bug or explicit `CLAUDE.md` violation.
 
-**Only report issues with confidence ≥ 26.** Silently discard everything below
-that threshold — do not mention what you filtered out. When unsure whether an
-issue is real or pre-existing, score it low and drop it; a clean, trustworthy
-report beats an exhaustive one.
+**Report all findings**
 
 ## Output Format
 
@@ -69,10 +66,7 @@ Group issues by severity:
 - **Critical (91-100)**
 - **Important (76-90)**
 - **Low (51-75)**
-- **Nitpick (26-50)**
-
-If no issues score ≥ 26, confirm the code meets standards with a brief summary of
-what you checked and why it's sound.
+- **Nitpick (0-50)**
 
 ## Constraints
 

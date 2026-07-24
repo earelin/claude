@@ -54,10 +54,7 @@ Rate each candidate issue from 0-100:
 - **76-90**: Important issue requiring attention.
 - **91-100**: Critical bug, security hole, or explicit `CLAUDE.md` violation.
 
-**Only report issues with confidence ≥ 26.** Silently discard everything below
-that threshold — do not mention what you filtered out. When unsure whether an
-issue is real or pre-existing, score it low and drop it; a clean, trustworthy
-report beats an exhaustive one.
+**Report all findings**
 
 ## Output Format
 
