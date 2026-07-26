@@ -7,7 +7,7 @@ description: >-
   when the user asks for a review of a specification, or wants to understand
   how ready a spec is to spawn features. Returns findings only; never edits
   files.
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash, Task
 model: opus
 effort: xhigh
 color: cyan

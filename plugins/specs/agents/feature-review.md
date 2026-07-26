@@ -7,7 +7,7 @@ description: >-
   asks for a review of a feature, or wants to understand how ready a feature
   is to be broken into tasks and built. Returns findings only; never edits
   files.
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash, Task
 model: opus
 effort: xhigh
 color: cyan

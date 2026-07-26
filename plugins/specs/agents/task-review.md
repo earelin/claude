@@ -6,7 +6,7 @@ description: >-
   and spec, testable acceptance criteria, and correct dependencies. Use when
   the user asks for a review of a task, or wants to confirm a task is ready
   to pick up and commit. Returns findings only; never edits files.
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash, Task
 model: opus
 effort: xhigh
 color: cyan

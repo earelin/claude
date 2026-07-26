@@ -5,7 +5,7 @@ description: >-
   in any tool or platform. Use proactively after writing or modifying pipeline
   definitions, IaC, or deployment config. Scores every issue for confidence and
   reports only high-confidence findings. Returns findings only; never edits files.
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash, Task
 model: opus
 effort: xhigh
 color: cyan
