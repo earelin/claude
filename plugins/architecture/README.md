@@ -9,8 +9,9 @@ reviewing Architecture Decision Records (ADRs).
 - **Skill** — `architecture:create-adr`, authors a new ADR (`NNNN`) capturing one
   architecturally significant decision in Nygard format, with correct sequential numbering and
   supersession handling.
-- **Skill** — `architecture:adr-review`, reviews an ADR for significance, a plainly-stated
-  decision, honest consequences, traceability, and correct immutability/supersession.
+- **Agent** — `adr-review`, a read-only subagent that reviews an ADR for significance, a
+  plainly-stated decision, honest consequences, traceability, and correct
+  immutability/supersession.
 
 ## Install
 
@@ -31,11 +32,11 @@ reviewing Architecture Decision Records (ADRs).
 architecture/
 ├── .claude-plugin/
 │   └── plugin.json          # plugin manifest
+├── agents/
+│   └── adr-review.md        # review an ADR (NNNN)
 └── skills/
     ├── architecture-review/
     │   └── SKILL.md         # review an architecture or design
-    ├── create-adr/
-    │   └── SKILL.md         # author an ADR (NNNN)
-    └── adr-review/
-        └── SKILL.md         # review an ADR (NNNN)
+    └── create-adr/
+        └── SKILL.md         # author an ADR (NNNN)
 ```

@@ -13,7 +13,7 @@ plugins you can add to Claude Code and install from.
 
 | Plugin | Description |
 | ------ | ----------- |
-| [`architecture`](plugins/architecture) | An `architecture-review` skill, plus `create-adr` and `adr-review` skills for authoring and reviewing Architecture Decision Records. |
+| [`architecture`](plugins/architecture) | An `architecture-review` skill, a `create-adr` skill for authoring Architecture Decision Records, and an `adr-review` agent for reviewing them. |
 | [`backend`](plugins/backend) | A `code-reviewer` agent and a `backend-refactoring` skill for reviewing and refactoring backend changes on the current branch or a pull request, plus `java-unit-test`, `java-integration-test`, and `java-acceptance-test` skills for writing Java tests. |
 | [`devops`](plugins/devops) | A `code-reviewer` agent and a `devops-refactoring` skill for reviewing and refactoring CI/CD pipeline and infrastructure-as-code changes on the current branch or a pull request. |
 | [`frontend`](plugins/frontend) | A `code-reviewer` agent and a `frontend-refactoring` skill for reviewing and refactoring frontend changes on the current branch or a pull request. |
