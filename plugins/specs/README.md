@@ -15,15 +15,16 @@ into small tasks.
 - **Skill** — `specs:create-task`, authors `TASK-NNNN` files inside the feature folder
   `docs/features/FEAT-NNNN-kebab-title/`, the smallest self-contained slice of a feature, tracing
   up to a spec and recording ordering in `depends_on:`.
-- **Skill** — `specs:specs-review`, reviews a `SPEC-NNNN` against a structured checklist (level
-  of abstraction, requirements quality, testable acceptance criteria, breadth & stability,
-  traceability, and format/conventions) — checking a spec stays at the *what* level and is ready
-  to spawn features.
-- **Skill** — `specs:feature-review`, reviews a `FEAT-NNNN` for design quality, traceability to
-  its spec and ADRs, a genuine slice scope, and a sound breakdown into small tasks.
-- **Skill** — `specs:task-review`, reviews a `TASK-NNNN` for small self-contained scope,
-  traceability up to its feature and spec, testable acceptance criteria, and correct
-  `depends_on:` ordering.
+- **Agent** — `specs-review`, a read-only subagent that reviews a `SPEC-NNNN` against a
+  structured checklist (level of abstraction, requirements quality, testable acceptance
+  criteria, breadth & stability, traceability, and format/conventions) — checking a spec stays
+  at the *what* level and is ready to spawn features.
+- **Agent** — `feature-review`, a read-only subagent that reviews a `FEAT-NNNN` for design
+  quality, traceability to its spec and ADRs, a genuine slice scope, and a sound breakdown into
+  small tasks.
+- **Agent** — `task-review`, a read-only subagent that reviews a `TASK-NNNN` for small
+  self-contained scope, traceability up to its feature and spec, testable acceptance criteria,
+  and correct `depends_on:` ordering.
 
 ## Install
 
@@ -47,17 +48,15 @@ into small tasks.
 specs/
 ├── .claude-plugin/
 │   └── plugin.json          # plugin manifest
+├── agents/
+│   ├── specs-review.md      # review a SPEC-NNNN
+│   ├── feature-review.md    # review a FEAT-NNNN
+│   └── task-review.md       # review a TASK-NNNN
 └── skills/
     ├── create-spec/
     │   └── SKILL.md         # author a SPEC-NNNN
     ├── create-feature/
     │   └── SKILL.md         # author a FEAT-NNNN
-    ├── create-task/
-    │   └── SKILL.md         # author TASK-NNNN files
-    ├── specs-review/
-    │   └── SKILL.md         # review a SPEC-NNNN
-    ├── feature-review/
-    │   └── SKILL.md         # review a FEAT-NNNN
-    └── task-review/
-        └── SKILL.md         # review a TASK-NNNN
+    └── create-task/
+        └── SKILL.md         # author TASK-NNNN files
 ```
