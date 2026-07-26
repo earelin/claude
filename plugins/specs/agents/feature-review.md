@@ -30,6 +30,17 @@ You review the **feature document itself**. Judging whether the parent spec is s
    conventions (`docs/features/CLAUDE.md`) if present.
 3. Use Grep/Glob to check for implied architectural decisions with no ADR behind them and to
    confirm task-level coverage of the feature's sequencing section.
+4. For each task found in the feature folder, launch a `task-review` subagent (via the Task
+   tool) to review it, and fold its findings into your own report — see "Delegated task
+   reviews" below.
+
+## Delegated task reviews
+
+Reviewing an individual task's scope in depth is `task-review`'s job, not yours here — but a
+feature that has already been cut into tasks can't be judged cleanly decomposed without
+knowing how those tasks turned out. Launch one `task-review` subagent per task found in the
+feature folder, run them in parallel, and wait for all of them before writing your own report.
+Do not review the tasks yourself; delegate.
 
 ## Review criteria
 
@@ -86,15 +97,22 @@ relevant to the feature under review (not every question applies to every featur
 ## Output Format
 
 Start by naming the feature under review and what you read to review it (parent spec, cited
-ADRs, existing tasks).
+ADRs, existing tasks), and list which task reviews were delegated.
 
 Report findings grouped by the categories above. For each finding, give:
 - A clear description of the issue and its severity/priority.
 - A concrete, actionable suggestion — including *where* content should move when it sits at
   the wrong level (up into the spec, or down into a task/ADR).
 
+If any tasks were reviewed, add a `## Task reviews` section summarizing each delegated
+`task-review` verdict (one entry per task: readiness and its most important findings) — not
+the full sub-report, just enough for the reader to see whether the feature's task breakdown is
+actually working in practice.
+
 Close with an overall assessment of the feature's quality and its readiness to be broken into
-tasks and built: is it traced, a true slice, soundly designed, and cleanly decomposed?
+tasks and built: is it traced, a true slice, soundly designed, and cleanly decomposed? Factor
+the delegated task reviews into this verdict — a feature whose tasks are all poorly scoped may
+itself carry a design or breakdown problem.
 
 ## Constraints
 

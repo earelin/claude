@@ -31,6 +31,16 @@ and ready to spawn features.
    features or ADRs that reference it.
 3. Use Grep/Glob to find features that cite this spec in their `spec:` frontmatter, to gauge
    whether the spec decomposes as expected.
+4. For each feature found, launch a `feature-review` subagent (via the Task tool) to review
+   it, and fold its findings into your own report — see "Delegated feature reviews" below.
+
+## Delegated feature reviews
+
+Reviewing a feature's design in depth is `feature-review`'s job, not yours here — but a spec
+that has already spawned features can't be judged ready or unready without knowing how those
+features turned out. Launch one `feature-review` subagent per feature found in step 3, run
+them in parallel, and wait for all of them before writing your own report. Do not review the
+features yourself; delegate.
 
 ## Review criteria
 
@@ -85,15 +95,22 @@ relevant to the specification under review (not every question applies to every 
 ## Output Format
 
 Start by naming the spec under review and what you read to review it (sibling conventions,
-referencing features/ADRs).
+referencing features/ADRs), and list which feature reviews were delegated.
 
 Report findings grouped by the categories above. For each finding, give:
 - A clear description of the issue and its severity/priority.
 - A concrete, actionable suggestion — including *where* content should move when it sits at
   the wrong level (feature, task, or ADR).
 
+If any features were reviewed, add a `## Feature reviews` section summarizing each delegated
+`feature-review` verdict (one entry per feature: readiness and its most important findings) —
+not the full sub-report, just enough for the reader to see whether the spec's decomposition is
+actually working in practice.
+
 Close with an overall assessment of the spec's quality and its readiness to spawn features: is
-it at the right level, verifiable, broad, and stable enough to proceed?
+it at the right level, verifiable, broad, and stable enough to proceed? Factor the delegated
+feature reviews into this verdict — a spec whose spawned features are all struggling may
+itself be the root cause.
 
 ## Constraints
 

@@ -18,10 +18,12 @@ into small tasks.
 - **Agent** — `specs-review`, a read-only subagent that reviews a `SPEC-NNNN` against a
   structured checklist (level of abstraction, requirements quality, testable acceptance
   criteria, breadth & stability, traceability, and format/conventions) — checking a spec stays
-  at the *what* level and is ready to spawn features.
+  at the *what* level and is ready to spawn features. Delegates to a `feature-review`
+  subagent for every feature that already cites the spec, and factors their verdicts in.
 - **Agent** — `feature-review`, a read-only subagent that reviews a `FEAT-NNNN` for design
   quality, traceability to its spec and ADRs, a genuine slice scope, and a sound breakdown into
-  small tasks.
+  small tasks. Delegates to a `task-review` subagent for every task already cut from the
+  feature, and factors their verdicts in.
 - **Agent** — `task-review`, a read-only subagent that reviews a `TASK-NNNN` for small
   self-contained scope, traceability up to its feature and spec, testable acceptance criteria,
   and correct `depends_on:` ordering.
