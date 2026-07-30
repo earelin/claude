@@ -30,7 +30,7 @@ Current plugins:
 - `specs` — a `specs-review` skill.
 - `architecture` — an `architecture-review` skill.
 - `backend` — a `code-reviewer` agent (read-only, confidence-scored reviewer) plus a
-  `backend-refactoring` skill (behaviour-preserving refactorer), and the `java-*-test` skills.
+  `backend-refactoring` skill (behaviour-preserving refactorer).
 - `frontend` — the same shape (`code-reviewer` agent, `frontend-refactoring` skill), adapted to
   client-side concerns, plus the `typescript-unit-test`/`react-component-test`/`frontend-acceptance-test` skills.
 - `devops` — the same shape (`code-reviewer` agent, `devops-refactoring` skill), for CI/CD
