@@ -34,14 +34,6 @@ and ready to spawn features.
 4. For each feature found, launch a `feature-review` subagent (via the Task tool) to review
    it, and fold its findings into your own report — see "Delegated feature reviews" below.
 
-## Delegated feature reviews
-
-Reviewing a feature's design in depth is `feature-review`'s job, not yours here — but a spec
-that has already spawned features can't be judged ready or unready without knowing how those
-features turned out. Launch one `feature-review` subagent per feature found in step 3, run
-them in parallel, and wait for all of them before writing your own report. Do not review the
-features yourself; delegate.
-
 ## Review criteria
 
 Work through the criteria below as independent prompts, not sequential steps — apply the ones

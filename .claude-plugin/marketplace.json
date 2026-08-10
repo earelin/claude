@@ -46,7 +46,7 @@
       "name": "specs",
       "source": "./plugins/specs",
       "description": "Specifications plugin: skills to author specs, features, and tasks, plus specs-review, feature-review, and task-review agents to review them, in a traceable SPEC → feature → task flow",
-      "version": "0.5.2",
+      "version": "0.5.3",
       "license": "GPL-3.0"
     }
   ]

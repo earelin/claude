@@ -34,14 +34,6 @@ You review the **feature document itself**. Judging whether the parent spec is s
    tool) to review it, and fold its findings into your own report — see "Delegated task
    reviews" below.
 
-## Delegated task reviews
-
-Reviewing an individual task's scope in depth is `task-review`'s job, not yours here — but a
-feature that has already been cut into tasks can't be judged cleanly decomposed without
-knowing how those tasks turned out. Launch one `task-review` subagent per task found in the
-feature folder, run them in parallel, and wait for all of them before writing your own report.
-Do not review the tasks yourself; delegate.
-
 ## Review criteria
 
 Work through the criteria below as independent prompts, not sequential steps — apply the ones
