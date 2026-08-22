@@ -18,7 +18,7 @@ plugins you can add to Claude Code and install from.
 | [`devops`](plugins/devops) | A `code-reviewer` agent and a `devops-refactoring` skill for reviewing and refactoring CI/CD pipeline and infrastructure-as-code changes on the current branch or a pull request. |
 | [`frontend`](plugins/frontend) | A `code-reviewer` agent and a `frontend-refactoring` skill for reviewing and refactoring frontend changes on the current branch or a pull request. |
 | [`github`](plugins/github) | Skills for creating and reading GitHub pull requests and issues with the `gh` CLI. |
-| [`specs`](plugins/specs) | Skills to author specs, features, and tasks, plus `specs-review`, `feature-review`, and `task-review` agents to review them, in a traceable SPEC → feature → task flow. |
+| [`specs`](plugins/specs) | Skills to author specs, features, and tasks and to distill finished features into ADRs and living docs, plus `specs-review`, `feature-review`, and `task-review` agents to review them, in a traceable SPEC → feature → task flow. |
 
 The `specs`, `architecture`, `backend`, `frontend`, and `devops` plugins depend on `github`, so
 installing any of them also installs `github`.
