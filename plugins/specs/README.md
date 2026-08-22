@@ -15,6 +15,10 @@ into small tasks.
 - **Skill** — `specs:create-task`, authors `TASK-NNNN` files inside the feature folder
   `docs/features/FEAT-NNNN-kebab-title/`, the smallest self-contained slice of a feature, tracing
   up to a spec and recording ordering in `depends_on:`.
+- **Skill** — `specs:distill-feature`, distills a completed `FEAT-NNNN` into durable
+  documentation — ADRs for decisions, module/architecture docs for current behaviour, user guides
+  for user-visible behaviour, executable artifacts for rules — verifies nothing was lost with a
+  round-trip test, then retires the feature and its task files.
 - **Agent** — `specs-review`, a read-only subagent that reviews a `SPEC-NNNN` against a
   structured checklist (level of abstraction, requirements quality, testable acceptance
   criteria, breadth & stability, traceability, and format/conventions) — checking a spec stays
@@ -40,6 +44,7 @@ into small tasks.
 - "Write a spec for …" / "draft a new spec" → `create-spec`.
 - "Turn this into a feature" / "draft FEAT-… for this spec" → `create-feature`.
 - "Break this feature into tasks" / "create the tasks for FEAT-…" → `create-task`.
+- "This feature is shipped, close it out" / "clean up the finished design docs" → `distill-feature`.
 - "Review this specification" (paste or point to the spec) → `specs-review`.
 - "Review this feature" / "is FEAT-… ready to build?" → `feature-review`.
 - "Review this task" / "is TASK-… ready to pick up?" → `task-review`.
@@ -59,6 +64,8 @@ specs/
     │   └── SKILL.md         # author a SPEC-NNNN
     ├── create-feature/
     │   └── SKILL.md         # author a FEAT-NNNN
-    └── create-task/
-        └── SKILL.md         # author TASK-NNNN files
+    ├── create-task/
+    │   └── SKILL.md         # author TASK-NNNN files
+    └── distill-feature/
+        └── SKILL.md         # retire a shipped FEAT-NNNN into durable docs
 ```
