@@ -117,8 +117,9 @@ Read three things, in this order:
    Too few means things get lost inside a lump. Include any prose flagged in a task file at Phase 0.
 2. **The merged diff** — `git diff <base>..<merge_commit> --stat`, then read the substantive files.
    This is what actually shipped.
-3. **The existing docs** — the ADR index, the module docs for every module the diff touched, and the
-   user docs. You need to know what is *already* recorded so you don't duplicate it.
+3. **The existing docs** — the ADR index, the module docs for every module the diff touched, the
+   user docs, and the project's risk register if it has one. You need to know what is *already*
+   recorded so you don't duplicate it.
 
 Then record **divergences**: places where the doc describes something the code doesn't do, or the
 code does something the doc never mentions. A mid-implementation change of approach that nobody wrote
@@ -158,10 +159,21 @@ Classify each unit with this tree. Apply in order; first match wins.
 9. USER-VISIBLE — something a person can see, do, or must
    understand                                                 → USER DOC
 
-10. Anything else                                             → ASK. Never guess.
+10. A RISK or ASSUMPTION still open after shipping —
+    reaches another feature or the organisation               → RISK REGISTER (own ID)
+    residual to one module: a gap a guarantee doesn't cover   → MODULE DOC (failure modes)
+    mitigated, and a test or the code pins the mitigation     → VERIFY test
+    died with the shipped change                              → DISCARD
+
+11. Anything else                                             → ASK. Never guess.
 ```
 
-Steps 6–8 **write no prose at all**. The point is that an executable artifact already carries the
+Steps 6–8 **write no prose at all**.
+
+Risks need their own step because the feature doc is usually their only home: a risk register that
+keeps just the cross-cutting ones, by design, leaves the single-feature ones with nowhere to go once
+the feature is deleted. If the register also carries an *index* pointing back to the feature (a row
+per feature, a "see feature" table), retire or re-point that row in the same commit. The point is that an executable artifact already carries the
 knowledge and cannot silently rot; your job is to confirm it exists and record where. If it doesn't
 exist, the only honest moves are write it now, or reclassify to module doc.
 
@@ -259,10 +271,14 @@ grep -n "deadLettersAfterThirdFailure" src/test/java/.../PaymentRetryTest.java
 
 # nothing else still links to the feature path
 # (excluding provenance markers, which are supposed to mention it)
-grep -rn "FEAT-0042" --include=*.md . \
+grep -rnE "FEAT-0042|\bF0042\b" --include=*.md . \
   | grep -v "docs/features/FEAT-0042" \
   | grep -vE "source_feature:|distilled-from:"
 ```
+
+Widen that pattern to every short form the project uses for feature IDs (`F0042`, `F42`, `#42`) —
+check how the existing docs cite features before trusting it. A mention in a table or a list with no
+link is invisible to a link checker, so this grep is the only thing that finds it.
 
 Then the **round-trip test**, which is the real safety property and can't be automated:
 
@@ -324,6 +340,7 @@ Each of these means knowledge is about to be lost. Report the reason and stop:
 
 - a unit is still unclassified
 - a decision has no ADR
+- an open risk has no destination
 - a `verify` unit's evidence doesn't resolve to a real file and symbol
 - a round-trip question is unanswerable from the distilled corpus
 - a divergence between doc and code is unresolved
